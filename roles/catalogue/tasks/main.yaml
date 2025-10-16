@@ -2,14 +2,14 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: app-setup.yaml
-  tag:
+  tags:
   - deployment
   
 - name: nodejs-setup 
   ansible.builtin.import_role:
     name: common
     tasks_from: nodejs-setup.yaml
-  tag:
+  tags:
   - deployment
 
 - name: copy mongo repo
@@ -35,5 +35,5 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: system-setup.yaml
-  tag:
+  tags:
     - deployment
