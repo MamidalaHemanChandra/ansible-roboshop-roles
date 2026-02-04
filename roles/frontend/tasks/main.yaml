@@ -13,16 +13,16 @@
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
-  
-- name: download frontend application
-  ansible.builtin.get_url:
-    url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
-    dest: /tmp/frontend.zip
 
 - name: create frontend html
   ansible.builtin.file:
     path: /usr/share/nginx/html 
     state: directory
+  
+- name: download frontend application
+  ansible.builtin.get_url:
+    url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+    dest: /tmp/frontend.zip
 
 - name: unzip frontend application
   ansible.builtin.unarchive:
@@ -39,5 +39,5 @@
   ansible.builtin.template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
-  notify: nginx
+  notify: restart nginx
 
