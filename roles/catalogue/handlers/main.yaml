@@ -1,4 +1,3 @@
 - name: daemon reload
   ansible.builtin.systemd_service:
-    name: catalogue
     daemon_relod: true 
